@@ -21,12 +21,21 @@ function App() {
       rating: 4
     }
   ]
+
+  const jokesComponents = [
+    <Joke joke={jokes[0].joke} rating={jokes[0].rating} />,
+    <Joke joke={jokes[1].joke} rating={jokes[1].rating} />
+  ]
+
   return (
       <div>
         <h1>Dad Jokes</h1>
 
-        <Joke joke={jokes[0].joke} rating={jokes[0].rating} />
-        <Joke joke={jokes[1].joke} rating={jokes[1].rating} />
+        {/* <Joke joke={jokes[0].joke} rating={jokes[0].rating} />
+        <Joke joke={jokes[1].joke} rating={jokes[1].rating} /> */}
+
+        {jokesComponents}
+
       </div>
   )
 }
