@@ -26,17 +26,18 @@ function App() {
     }
   ]
 
-  const jokesComponents = []
-
-  for (const joke of jokes) {
-    jokesComponents.push(<Joke key={joke.id} joke={joke.joke} rating={joke.rating} />)
-  }
-
   return (
       <div>
         <h1>Dad Jokes</h1>
 
-        {jokesComponents}
+        {jokes.map(joke => (
+          <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
+        ))}
+
+        <h1>Best Jokes</h1>
+        {jokes.filter(joke => joke.rating === 5).map(joke => (
+          <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
+        ))}
 
       </div>
   )
