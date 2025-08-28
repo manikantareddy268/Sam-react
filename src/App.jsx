@@ -35,10 +35,6 @@ function App() {
     console.log("Form submitted!")
   }
 
-  function handleTextChange(e) {
-    console.log(e.target.value)
-  }
-
   return (
       <div className="App">
         {/* <h1>Dad Jokes</h1>
@@ -55,7 +51,7 @@ function App() {
         <button onClick={handleClick}>Do Something</button>
 
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleTextChange} />
+          <input type="text" onChange={(e) => console.log(e.target.value)} />
           <button type='submit'>Submit</button>
         </form>
 
