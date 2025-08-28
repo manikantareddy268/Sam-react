@@ -1,7 +1,7 @@
 import { use, useState } from "react"
 
 // export default function Joke({joke, rating=0}) {
-export default function Joke({id, text}) {
+export default function Joke({id, text, favorite, onFavorite}) {
 
     // let stars = ""
     // for (let i = 0; i < 5; i++) {
@@ -14,7 +14,6 @@ export default function Joke({id, text}) {
 
     const [likes, setLike] = useState(0)
     const [dislikes, setDislike] = useState(0)
-    const [favorite, setFavorite] = useState(false)
 
     const handleLike = () => {
         const newLikes = likes + 1
@@ -28,7 +27,7 @@ export default function Joke({id, text}) {
     }
 
     const handleFavorite = () => {
-        setFavorite(!favorite)
+        onFavorite(id)
     } 
     
     return (

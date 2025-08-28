@@ -1,8 +1,11 @@
 import './App.css'
 import Joke from './Joke'
 import Form from './Form'
+import { useState } from 'react'
 
 function App() {
+
+  const [favorite, setFavorite] = useState(1)
 
   const jokes =[
     {
@@ -39,6 +42,10 @@ function App() {
     console.log("Form submitted!")
   }
 
+  const handleFavorite = (id) => {
+    setFavorite(id)
+  }
+
   return (
       <div className="App">
         <h1>Dad Jokes</h1>
@@ -53,7 +60,7 @@ function App() {
         ))} */}
 
         {jokes.map(joke => (
-          <Joke key={joke.id} id={joke.id} text={joke.text} />
+          <Joke onFavorite={handleFavorite} favorite={favorite === joke.id} key={joke.id} id={joke.id} text={joke.text} />
         ))}
 
         {/* <button onClick={handleClick}>Do Something</button> */}
