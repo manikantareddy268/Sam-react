@@ -7,23 +7,27 @@ function App() {
   const jokes =[
     {
       id: 1,
-      joke: "I'm reading a book about anti-gravity. It's impossible to put down!",
-      rating: 1  
+      // joke:
+      text: "I'm reading a book about anti-gravity. It's impossible to put down!",
+      // rating: 1  
     },
     {
       id: 2,
-      joke: "Why did the scarecrow win an award? Because he was outstanding in his field!",
-      rating: 4
+      // joke:
+      text: "Why did the scarecrow win an award? Because he was outstanding in his field!",
+      // rating: 4
     },
     {
       id: 3,
-      joke: "Why don't scientists trust atoms? Because they make up everything!",
-      rating: 5
+      // joke:
+      text: "Why don't scientists trust atoms? Because they make up everything!",
+      // rating: 5
     },
     {
       id: 4,
-      joke: "Why did the bicycle fall over? Because it was two-tired!",
-      rating: 4
+      // joke:
+      text: "Why did the bicycle fall over? Because it was two-tired!",
+      // rating: 4
     }
   ]
 
@@ -37,9 +41,9 @@ function App() {
 
   return (
       <div className="App">
-        {/* <h1>Dad Jokes</h1>
+        <h1>Dad Jokes</h1>
 
-        {jokes.map(joke => (
+        {/* {jokes.map(joke => (
           <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
         ))}
 
@@ -48,9 +52,13 @@ function App() {
           <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
         ))} */}
 
-        <button onClick={handleClick}>Do Something</button>
+        {jokes.map(joke => (
+          <Joke key={joke.id} id={joke.id} text={joke.text} />
+        ))}
 
-        <Form onSubmit={handleSubmit} />
+        {/* <button onClick={handleClick}>Do Something</button> */}
+
+        {/* <Form onSubmit={handleSubmit} /> */}
 
       </div>
   )
