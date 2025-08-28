@@ -26,9 +26,22 @@ function App() {
     }
   ]
 
+  function handleClick() {
+    console.log("Button clicked!")          
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    console.log("Form submitted!")
+  }
+
+  function handleTextChange(e) {
+    console.log(e.target.value)
+  }
+
   return (
-      <div>
-        <h1>Dad Jokes</h1>
+      <div className="App">
+        {/* <h1>Dad Jokes</h1>
 
         {jokes.map(joke => (
           <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
@@ -37,7 +50,14 @@ function App() {
         <h1>Best Jokes</h1>
         {jokes.filter(joke => joke.rating === 5).map(joke => (
           <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
-        ))}
+        ))} */}
+
+        <button onClick={handleClick}>Do Something</button>
+
+        <form onSubmit={handleSubmit}>
+          <input type="text" onChange={handleTextChange} />
+          <button type='submit'>Submit</button>
+        </form>
 
       </div>
   )
