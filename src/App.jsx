@@ -1,5 +1,6 @@
 import './App.css'
 import Joke from './Joke'
+import Form from './Form'
 
 function App() {
 
@@ -31,7 +32,6 @@ function App() {
   }
 
   function handleSubmit(e) {
-    e.preventDefault()
     console.log("Form submitted!")
   }
 
@@ -50,10 +50,7 @@ function App() {
 
         <button onClick={handleClick}>Do Something</button>
 
-        <form onSubmit={handleSubmit}>
-          <input type="text" onChange={(e) => console.log(e.target.value)} />
-          <button type='submit'>Submit</button>
-        </form>
+        <Form onSubmit={handleSubmit} />
 
       </div>
   )
