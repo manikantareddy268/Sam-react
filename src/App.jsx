@@ -2,6 +2,7 @@ import './App.css'
 import Joke from './Joke'
 import Form from './Form'
 import { useState } from 'react'
+import JokeForm from './JokeForm'
 
 function App() {
 
@@ -46,6 +47,10 @@ function App() {
     setFavorite(id)
   }
 
+  const handleNewJoke = (text) => {
+    console.log("New joke submitted: ", text)
+  }
+
   return (
       <div className="App">
         <h1>Dad Jokes</h1>
@@ -66,6 +71,8 @@ function App() {
         {/* <button onClick={handleClick}>Do Something</button> */}
 
         {/* <Form onSubmit={handleSubmit} /> */}
+
+        <JokeForm onNewJoke={handleNewJoke} />
 
       </div>
   )
