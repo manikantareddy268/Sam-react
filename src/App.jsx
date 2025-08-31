@@ -15,12 +15,12 @@ function App() {
       text: "I'm reading a book about anti-gravity. It's impossible to put down!",
       // rating: 1  
     },
-    // {
-    //   id: 2,
-    //   // joke:
-    //   text: "Why did the scarecrow win an award? Because he was outstanding in his field!",
-    //   // rating: 4
-    // },
+    {
+      id: 2,
+      // joke:
+      text: "Why did the scarecrow win an award? Because he was outstanding in his field!",
+      // rating: 4
+    },
     // {
     //   id: 3,
     //   // joke:
@@ -57,6 +57,11 @@ function App() {
     console.log("New joke submitted: ", text)
   }
 
+  const handleDeleteJoke = (id) => {
+    setJokes(jokes.filter(joke => joke.id !== id))
+    console.log("Delete joke with id: ", id) 
+  }
+
   return (
       <div className="App">
         <h1>Dad Jokes</h1>
@@ -71,7 +76,7 @@ function App() {
         ))} */}
 
         {jokes.map(joke => (
-          <Joke onFavorite={handleFavorite} favorite={favorite === joke.id} key={joke.id} id={joke.id} text={joke.text} />
+          <Joke onDelete={handleDeleteJoke} onFavorite={handleFavorite} favorite={favorite === joke.id} key={joke.id} id={joke.id} text={joke.text} />
         ))}
 
         {/* <button onClick={handleClick}>Do Something</button> */}

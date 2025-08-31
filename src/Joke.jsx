@@ -1,7 +1,7 @@
 import { use, useState } from "react"
 
 // export default function Joke({joke, rating=0}) {
-export default function Joke({id, text, favorite, onFavorite}) {
+export default function Joke({id, text, favorite, onFavorite, onDelete}) {
 
     // let stars = ""
     // for (let i = 0; i < 5; i++) {
@@ -41,6 +41,7 @@ export default function Joke({id, text, favorite, onFavorite}) {
             <button onClick={handleLike}>👍🏻</button>
             <button onClick={handleDislike}>👎🏻</button>
             <button onClick={handleFavorite}>Favorite</button>
+            <button onClick={() => onDelete(id)}>Delete</button>
         </div>
     )
 }
