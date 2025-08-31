@@ -14,12 +14,14 @@ function App() {
       // joke:
       text: "I'm reading a book about anti-gravity. It's impossible to put down!",
       // rating: 1  
+      likes: 0
     },
     {
       id: 2,
       // joke:
       text: "Why did the scarecrow win an award? Because he was outstanding in his field!",
       // rating: 4
+      likes: 0
     },
     // {
     //   id: 3,
@@ -50,7 +52,8 @@ function App() {
   const handleNewJoke = (text) => {
     const joke = {
       text,
-      id: self.crypto.randomUUID()
+      id: self.crypto.randomUUID(),
+      likes: 0
     }
     // jokes.push(joke) // This won't actually update the state or re-render the component
     setJokes([joke, ...jokes])
@@ -60,6 +63,31 @@ function App() {
   const handleDeleteJoke = (id) => {
     setJokes(jokes.filter(joke => joke.id !== id))
     console.log("Delete joke with id: ", id) 
+  }
+
+  const handleLike = (id) => {
+    
+    setJokes(jokes.map(joke => {
+      if (joke.id === id) {
+        return {
+          ...joke,
+          likes: joke.likes + 1
+        }
+      }
+      return joke
+    }))
+  }
+
+  const handleDislike = (id) => {
+    setJokes(jokes.map(joke => {
+      if (joke.id === id) {
+        return {
+          ...joke,
+          likes: joke.likes - 1
+        }
+      }
+      return joke
+    }))
   }
 
   return (
@@ -76,7 +104,13 @@ function App() {
         ))} */}
 
         {jokes.map(joke => (
-          <Joke onDelete={handleDeleteJoke} onFavorite={handleFavorite} favorite={favorite === joke.id} key={joke.id} id={joke.id} text={joke.text} />
+          <Joke 
+          onDelete={handleDeleteJoke} 
+          onFavorite={handleFavorite} favorite={favorite === joke.id} 
+          key={joke.id} 
+          onLike={handleLike}
+          onDislike={handleDislike}
+          {...joke} />
         ))}
 
         {/* <button onClick={handleClick}>Do Something</button> */}

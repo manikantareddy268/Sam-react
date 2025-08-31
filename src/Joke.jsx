@@ -1,7 +1,7 @@
 import { use, useState } from "react"
 
 // export default function Joke({joke, rating=0}) {
-export default function Joke({id, text, favorite, onFavorite, onDelete}) {
+export default function Joke({ id, text, favorite, onFavorite, onDelete, likes, onLike, onDislike }) {
 
     // let stars = ""
     // for (let i = 0; i < 5; i++) {
@@ -12,18 +12,13 @@ export default function Joke({id, text, favorite, onFavorite, onDelete}) {
     //     }
     // }
 
-    const [likes, setLike] = useState(0)
-    const [dislikes, setDislike] = useState(0)
 
     const handleLike = () => {
-        const newLikes = likes + 1
-        setLike(newLikes)
-        console.log(`Liked joke with id: ${id}, total likes: ${newLikes}`)
+        onLike(id)
     }
 
     const handleDislike = () => {
-        setDislike(dislikes + 1)
-        console.log(`Disliked joke with id: ${id}, total likes: ${likes}`)
+        onDislike(id)
     }
 
     const handleFavorite = () => {
@@ -36,7 +31,7 @@ export default function Joke({id, text, favorite, onFavorite, onDelete}) {
             <p>{stars}</p> */}
 
             <p>{text}</p>
-            <p>likes: {likes - dislikes}</p>
+            <p>likes: {likes}</p>
             <p>Favorite: {favorite ? "YES": "NO"}</p>
             <button onClick={handleLike}>👍🏻</button>
             <button onClick={handleDislike}>👎🏻</button>
