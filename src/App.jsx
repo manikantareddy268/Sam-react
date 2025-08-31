@@ -90,9 +90,15 @@ function App() {
     }))
   }
 
+  const handleSort = () => {
+    setJokes([...jokes].sort((a, b) => b.likes - a.likes))
+  }
+
   return (
       <div className="App">
         <h1>Dad Jokes</h1>
+
+        <button onClick={handleSort}>Sort</button>
 
         {/* {jokes.map(joke => (
           <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
