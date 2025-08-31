@@ -8,32 +8,32 @@ function App() {
 
   const [favorite, setFavorite] = useState(1)
 
-  const jokes =[
+  const [jokes, setJokes] = useState([
     {
       id: 1,
       // joke:
       text: "I'm reading a book about anti-gravity. It's impossible to put down!",
       // rating: 1  
     },
-    {
-      id: 2,
-      // joke:
-      text: "Why did the scarecrow win an award? Because he was outstanding in his field!",
-      // rating: 4
-    },
-    {
-      id: 3,
-      // joke:
-      text: "Why don't scientists trust atoms? Because they make up everything!",
-      // rating: 5
-    },
-    {
-      id: 4,
-      // joke:
-      text: "Why did the bicycle fall over? Because it was two-tired!",
-      // rating: 4
-    }
-  ]
+    // {
+    //   id: 2,
+    //   // joke:
+    //   text: "Why did the scarecrow win an award? Because he was outstanding in his field!",
+    //   // rating: 4
+    // },
+    // {
+    //   id: 3,
+    //   // joke:
+    //   text: "Why don't scientists trust atoms? Because they make up everything!",
+    //   // rating: 5
+    // },
+    // {
+    //   id: 4,
+    //   // joke:
+    //   text: "Why did the bicycle fall over? Because it was two-tired!",
+    //   // rating: 4
+    // }
+  ])
 
   function handleClick() {
     console.log("Button clicked!")          
@@ -48,6 +48,12 @@ function App() {
   }
 
   const handleNewJoke = (text) => {
+    const joke = {
+      text,
+      id: self.crypto.randomUUID()
+    }
+    // jokes.push(joke) // This won't actually update the state or re-render the component
+    setJokes([joke, ...jokes])
     console.log("New joke submitted: ", text)
   }
 
