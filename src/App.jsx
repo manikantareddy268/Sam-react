@@ -7,6 +7,7 @@ import JokeForm from './JokeForm'
 function App() {
 
   const [favorite, setFavorite] = useState(1)
+  const [showForm, setShowForm] = useState(false)
 
   const [jokes, setJokes] = useState([
     {
@@ -57,7 +58,7 @@ function App() {
     }
     // jokes.push(joke) // This won't actually update the state or re-render the component
     setJokes([joke, ...jokes])
-    console.log("New joke submitted: ", text)
+    setShowForm(false)
   }
 
   const handleDeleteJoke = (id) => {
@@ -94,37 +95,33 @@ function App() {
     setJokes([...jokes].sort((a, b) => b.likes - a.likes))
   }
 
+  const handleAddNewJoke = () => {
+    setShowForm(true)
+  }
+
   return (
       <div className="App">
         <h1>Dad Jokes</h1>
 
-        <button onClick={handleSort}>Sort</button>
+        <button onClick={handleAddNewJoke}>Add a new joke</button> <br /> 
 
-        {/* {jokes.map(joke => (
-          <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
-        ))}
+        {showForm ? 
+          <JokeForm onNewJoke={handleNewJoke} /> 
+          : 
+          <>
+            <button onClick={handleSort}>Sort</button>
 
-        <h1>Best Jokes</h1>
-        {jokes.filter(joke => joke.rating === 5).map(joke => (
-          <Joke key={joke.id} joke={joke.joke} rating={joke.rating} />
-        ))} */}
-
-        {jokes.map(joke => (
-          <Joke 
-          onDelete={handleDeleteJoke} 
-          onFavorite={handleFavorite} favorite={favorite === joke.id} 
-          key={joke.id} 
-          onLike={handleLike}
-          onDislike={handleDislike}
-          {...joke} />
-        ))}
-
-        {/* <button onClick={handleClick}>Do Something</button> */}
-
-        {/* <Form onSubmit={handleSubmit} /> */}
-
-        <JokeForm onNewJoke={handleNewJoke} />
-
+            {jokes.map(joke => (
+              <Joke 
+              onDelete={handleDeleteJoke} 
+              onFavorite={handleFavorite} favorite={favorite === joke.id} 
+              key={joke.id} 
+              onLike={handleLike}
+              onDislike={handleDislike}
+              {...joke} />
+            ))}
+          </>
+        }
       </div>
   )
 }
