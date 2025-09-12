@@ -11,14 +11,17 @@ function App() {
   const [title, setTitle] = useState("")
 
   useEffect(() => {
-    console.log("after rendered")
+    console.log("after title change")
     document.title = title
+  }, [title])
 
+  useEffect(() => {
+    console.log("after images change")
     window.scroll({
       top: Number.MAX_SAFE_INTEGER,
       behavior: 'smooth' 
     })
-  })
+  }, [images])
 
   const handleAddImage = (src) => {
     setImages([...images, {
