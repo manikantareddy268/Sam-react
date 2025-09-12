@@ -5,9 +5,14 @@ export default function Timer () {
 
     useEffect(() => {
         console.log("useEffect called")
-        setInterval(() => {
+        const interval = setInterval(() => {
             setTime(t => t + 1)
         }, 1000)
+
+        return () => {
+            // cleanup
+            clearInterval(interval)
+        }
     }, [])
 
     return (
