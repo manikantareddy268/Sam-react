@@ -3,6 +3,18 @@
 //  navigator.getBattery = () => Promise.reject() // to test error handling
 
  export default function BatteryStatus() {
+
+    const {isCharging, error} = useBatteryStatus()
+
+    return (
+        <>
+            <h2>Battery Status</h2>
+            {error ? <p>Could not get the battery status</p> : <p>Battery is {isCharging? "charging" : "not charging"}</p>}
+        </>
+    )
+}
+
+function useBatteryStatus() {
     const [isCharging, setIsCharging] = useState(false)
     const [error, setError] = useState(null)
 
@@ -28,10 +40,5 @@
         }
     }, [])
 
-    return (
-        <>
-            <h2>Battery Status</h2>
-            {error ? <p>Could not get the battery status</p> : <p>Battery is {isCharging? "charging" : "not charging"}</p>}
-        </>
-    )
- }
+    return {isCharging, error}
+}
